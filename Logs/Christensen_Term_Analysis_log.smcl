@@ -1,0 +1,92 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/lced/Documents/GitHub/Appalachia_Segreagation_Migration/Logs/Christensen_Term_Analysis_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}30 Sep 2023, 21:00:53
+{txt}
+{com}. 
+. frame create base
+{txt}
+{com}. frame change base
+{txt}
+{com}. 
+. use "Data/Clean/Final.dta"
+{txt}
+{com}. *-------------------------------------------------------------------------------
+. *Section 1: Summary Tables and Descriptive Statistics
+. *-------------------------------------------------------------------------------
+. *---------------------------------------
+. *Section 1.1 Table 1 (Descriptive Statistics/Balance Test)
+. *---------------------------------------
+. eststo clear
+{txt}
+{com}. 
+. estpost tabstat migrant black Last_County_App last_sei yearbirth ///
+> last_rural last_owner last_farm sex native_nc native_oh secondgen_nc ///
+> secondgen_oh, ///
+>  statistics( mean) columns(statistics)
+{err}variable {bf}migrant{sf} not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "/var/folders/j9/_v8_fhp52cg7p7m3kwpgnb4w0000gn/T//SD40411.000000"
+{txt}
+{com}. /*******************************************************************************
+> ********************************************************************************
+> ********************************************************************************
+> 
+> 
+> *                Segregation and Migration in Appalachia: Analysis
+> *                              L. Cedric Christensen 
+> 
+> 
+> *-----------------------------------
+> *Purpose: Develop summary and analytical statistics for the data cleaned in 
+>         Christensen_Term_Cleaning.do using 3 way interactions and matching models.
+> *-----------------------------------
+> *-----------------------------------
+> *Input: Clean_Data/Data_Final.dta
+> 
+> *Outputs:
+>           
+> *-----------------------------------
+> *-----------------------------------
+> *Notes: 
+>         
+> *-----------------------------------
+> *-----------------------------------
+> *Table of Contents:
+> * Section 0.0: Directory Configuration
+> * Section 1.0: Tables
+>         *Section 1.1 Table 1
+>         *Section 1.2 Table 2 (Correlations)
+>         *Section 1.3 Table 3 (Means Comparison)
+>         *Section 1.4 Summary Statistics
+> * Section 2.0: Figures
+>         *Section 2.1 Histograms for segregation by Appalachia and Race
+>         *Section 2.1 Histograms for SEI by Appalachia and Race
+> *Section 3: Regressions
+>         *Section 3.1 Non-Segregation Race and Region Estimates
+>         *Section 3.2 Race and Segregation Regressions
+>         *Section 3.3 Race, Segrgation and Region Regressions
+> *Section 4: Matching
+>         *Section 4.1: Developing 'treatment' Category
+> *Section 5: Exploratory Analysis        
+> *-----------------------------------
+> ********************************************************************************
+> ********************************************************************************
+> *******************************************************************************/
+. 
+. clear
+{txt}
+{com}. clear frames
+{txt}
+{com}. set more off
+{txt}
+{com}. capture log close
+{smcl}
+{com}{sf}{ul off}
