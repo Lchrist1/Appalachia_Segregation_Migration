@@ -69,9 +69,6 @@ estpost tabstat migrant black Last_County_App last_sei yearbirth ///
 last_rural last_owner last_farm sex native_nc native_oh secondgen_nc ///
 secondgen_oh, ///
  statistics( mean) columns(statistics)
-
-esttab using "Output/Tables/Means_table.rtf", ///
- title("Table 1: Means by Race and Region") cells("mean") mtitle("Full Sample") replace
  
 esttab using "Output/Tables/Means_table.tex", ///
  title("Table 1: Means by Race and Region") cells("mean") mtitle("Life-M Unweighted") replace
@@ -79,7 +76,6 @@ esttab using "Output/Tables/Means_table.tex", ///
 *---------------------------------------
 *Section 1.2 Table 2 (Correlations)
 *---------------------------------------
- 
 mean migrant [pweight = sample_pweight], over(black Last_County_App)
  
 pwcorr black Last_County_App last_rural sex native_nc native_oh ///
@@ -92,7 +88,7 @@ eststo clear
 tabulate black Last_County_App, summarize(migrant) nostandard noobs
 
 *---------------------------------------
-*Section 1.4: Summary Statistics
+*Section 1.4: Other Summary Statistics 
 *---------------------------------------
 mean blk_total if last_state == 37 [pweight = sample_pweight], over(Last_County_App)
 
@@ -107,6 +103,7 @@ mean alpha_pb1940 if last_state == 37 [pweight = sample_pweight], over(Last_Coun
 *truncate variables to be between 0 and 1 (use of random sorting as benchmark led to small exceptions)
 replace alpha_pb1940 = 0.99999 if alpha_pb1940>1 
 replace alpha_pb1940 = 0 if alpha_pb1940<0
+
 histogram alpha_pb1940, bin(9) start(0) by(Last_County_App)
 save "Output/Figures/Segregation_by_Appalachia.svg", replace
 histogram alpha_pb1940, bin(9) start(0) by(black)
@@ -236,7 +233,7 @@ esttab fullmodel_alpha fullmodel_isolation fullmodel_dissim ///
  title("Main Results") cells("b(fmt(3))" "p(fmt(3))") noomitted nobaselevels replace
 
 
-*------------------------------------------------------------------------------
+*-------------------------------------------------------------------------------
 *Section 4: Matching
 *-------------------------------------------------------------------------------
 *---------------------------------------
